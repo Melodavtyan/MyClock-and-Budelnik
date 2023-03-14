@@ -12,13 +12,11 @@ class Clock {
                 clock.min += 1
                 clock.sec = 0
 
-            }
-            if (clock.min === 60) {
+            }else if (clock.min === 60) {
                 clock.hour += 1
                 clock.min = 0
 
-            }
-            if (clock.hour === 24) {
+            }else if (clock.hour === 24) {
                 clock.hour = 0
 
 
