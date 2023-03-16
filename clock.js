@@ -6,22 +6,25 @@ class Clock {
 
     }
     start() {
-        setInterval(function () {
-            clock.sec += 1
-            if (clock.sec === 60) {
-                clock.min += 1
-                clock.sec = 0
+        setInterval(() => {
+            this.sec += 1
+            if (this.sec === 60) {
+                this.min += 1
+                this.sec = 0
 
-            }else if (clock.min === 60) {
-                clock.hour += 1
-                clock.min = 0
+                if (this.min === 60) {
+                    this.hour += 1
+                    this.min = 0
 
-            }else if (clock.hour === 24) {
-                clock.hour = 0
+                    if (this.hour === 24) {
+                        this.hour = 0
 
 
+                    }
+                }
             }
-            console.log(clock.toString());
+
+            console.log(this.toString());
 
         }, 1000)
     }
@@ -30,20 +33,21 @@ class Clock {
     }
     // budelniki messagei anun@/haur/minute/secunds
     setAlert(name, h, min, sec) {
-        return new Promise(function (res, rej) {
+        return new Promise( (res, rej)=> {
             setInterval(() => {
-                if (h === clock.hour && min === clock.min && sec === clock.sec) {
+                if (h === this.hour && min === this.min && sec === this.sec) {
 
                     res(alert(name))
                 }
 
 
             }, 1000);
-            if (h < clock.hour || min < clock.min || sec < clock.sec) {
+            if (h < this.hour || min < this.min || sec < this.sec) {
 
                 rej(console.log(new Error(name + "-" + "Այս անունով բուդելնիկի Ժամն արդեն անցել է")))
 
             }
+
         })
 
     }
